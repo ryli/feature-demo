@@ -4,15 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="icon" sizes="32x32" href="./assets/favicon.ico">
   <title>Feature demo</title>
+  <style>
+#content {
+  font-size: 16px;
+}
+@media screen and (max-width: 376px) {
+  #content {
+    font-size: 14px;
+  }
+}
+
+#content-loading {
+  padding-top: 30px;
+  padding-left: 60px;
+  color: #333;
+}
+
+#footer {
+  margin-top: 100px;
+  height: 30px;
+  text-align: center;
+  color: #999;
+}
+  </style>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/github-markdown-css/2.4.1/github-markdown.css">
   <script src="//cdn.jsdelivr.net/marked/0.3.5/marked.min.js"></script>
 </head>
 <body>
-  <div id="content" class="markdown-body"></div>
+  <div id="content" class="markdown-body">
+    <p id="content-loading">loading...</p>
+  </div>
+
+  <div id="footer"></div>
 
   <script>
-  fetch('README.md').then(function (res) {
+  fetch('./README.md').then(function (res) {
       return res.text()
   }).then(function (data) {
     document.getElementById('content').innerHTML = marked(data)
